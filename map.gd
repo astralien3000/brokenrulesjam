@@ -7,10 +7,14 @@ const CHUNK_SIZE = 16
 
 @export var chunk_tscn: PackedScene
 
+@export var heightmap_texture: Texture2D
+var heightmap: Image
+
 var chunks: Dictionary[Vector3i, Chunk] = {}
 
 func _ready():
-	generate_around(0,0,0)
+	heightmap = heightmap_texture.get_image()
+	heightmap.convert(Image.FORMAT_RF)
 
 func generate_around(cx, cy, cz):
 	WorkerThreadPool.add_task(
@@ -24,14 +28,17 @@ func generate_around(cx, cy, cz):
 
 func generate_chunk(cx, cy, cz):
 	var chunk = chunk_tscn.instantiate()
-	if Vector3i(cx, cy, cz) in chunks.keys():
+	if Vector3i(cx, cy, cz) in chunks:
 		return
 	chunks[Vector3i(cx, cy, cz)] = chunk
 	for bx in range(0, CHUNK_SIZE):
 		var x = cx * CHUNK_SIZE + bx
 		for bz in range(0, CHUNK_SIZE):
 			var z = cz * CHUNK_SIZE + bz
-			var height = noise.get_noise_2d(x, z) * 10
+			var height = noise.get_noise_2d(x, z) * 5
+			if 0 <= x and x < heightmap.get_width():
+				if 0 <= z and z < heightmap.get_height():
+					height += heightmap.get_pixel(x, z).r * 20
 			for by in range(0, CHUNK_SIZE):
 				var y = cy * CHUNK_SIZE + by
 				if y < height:

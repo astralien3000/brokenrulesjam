@@ -3,12 +3,16 @@
 [ext_resource type="MeshLibrary" uid="uid://cux1lwrbs4b7l" path="res://block_library.tres" id="1_c7s6e"]
 [ext_resource type="Script" uid="uid://b38awdytfgrqa" path="res://map.gd" id="2_wijl4"]
 [ext_resource type="PackedScene" uid="uid://brbixmwnaiy3y" path="res://chunk.tscn" id="3_e0an3"]
+[ext_resource type="Texture2D" uid="uid://deb63xkky0j8" path="res://heightmap.png" id="3_p5pve"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wijl4"]
+noise_type = 0
+frequency = 0.005
 
 [node name="Map" type="Node3D" unique_id=35151360]
 script = ExtResource("2_wijl4")
 noise = SubResource("FastNoiseLite_wijl4")
 mesh_library = ExtResource("1_c7s6e")
 chunk_tscn = ExtResource("3_e0an3")
+heightmap_texture = ExtResource("3_p5pve")
 metadata/_editor_floor_ = Vector3(0, -1, 0)
