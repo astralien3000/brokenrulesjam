@@ -6,4 +6,5 @@
 [node name="Chunk" type="GridMap" unique_id=984051207]
 mesh_library = ExtResource("1_eat54")
 cell_size = Vector3(1, 1, 1)
+collision_layer = 5
 script = ExtResource("2_a0kup")

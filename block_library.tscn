@@ -25,6 +25,7 @@ material = SubResource("StandardMaterial3D_wryqs")
 mesh = SubResource("BoxMesh_6bk5n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Dirt" unique_id=1674119667]
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt/StaticBody3D" unique_id=509302595]
 shape = SubResource("BoxShape3D_p0hct")
@@ -34,6 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2007945, 0, 0)
 mesh = SubResource("BoxMesh_kpmos")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cobble" unique_id=1213826772]
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cobble/StaticBody3D" unique_id=590296251]
 shape = SubResource("BoxShape3D_p0hct")
