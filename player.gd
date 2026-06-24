@@ -15,7 +15,9 @@ const JUMP_VELOCITY = 10.0
 @onready var body_shape: CollisionShape3D = $BodyShape
 
 @onready var interaction_cast: RayCast3D = $CameraYRoot/CameraXRoot/Camera3D/RayCast3D
-@onready var slot: Node3D = $Slot
+@onready var slot: Node3D = $BodyShape/Slot
+
+@onready var jump_detector: Area3D = $BodyShape/JumpDetector
 
 var block : int = -1
 
@@ -60,12 +62,14 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (camera_y_root.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		if jump_detector.has_overlapping_bodies() and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		body_shape.rotation.y = atan2(-direction.x, -direction.z)

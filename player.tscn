@@ -7,6 +7,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_7y3yr"]
 size = Vector3(1.5849609, 2.741455, 0.9034424)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_204wl"]
+size = Vector3(1, 1, 0.66015625)
+
 [node name="Player" type="CharacterBody3D" unique_id=1024996980]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -21,6 +24,16 @@ shape = SubResource("BoxShape3D_7y3yr")
 [node name="character-a" parent="BodyShape" unique_id=823342386 instance=ExtResource("1_4flbx")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.012207031, -1.3682861, -6.1035156e-05)
 
+[node name="Slot" type="Node3D" parent="BodyShape" unique_id=2132782800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012207031, 2.2832031, -6.1035156e-05)
+
+[node name="JumpDetector" type="Area3D" parent="BodyShape" unique_id=1409524971]
+collision_layer = 0
+
+[node name="JumpDetectorShape" type="CollisionShape3D" parent="BodyShape/JumpDetector" unique_id=818824036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7621846, -0.8557329)
+shape = SubResource("BoxShape3D_204wl")
+
 [node name="CameraYRoot" type="Node3D" parent="." unique_id=478056228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1228027, 0)
 
@@ -31,7 +44,4 @@ transform = Transform3D(1, 0, 0, 0, 0.9770456, 0.21303038, 0, -0.21303038, 0.977
 current = true
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraYRoot/CameraXRoot/Camera3D" unique_id=2127350989]
-target_position = Vector3(0, 0, -7)
-
-[node name="Slot" type="Node3D" parent="." unique_id=2132782800]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6514893, 0)
+target_position = Vector3(0, 0, -10)

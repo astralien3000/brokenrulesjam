@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://brbixmwnaiy3y"]
+
+[ext_resource type="MeshLibrary" uid="uid://cux1lwrbs4b7l" path="res://block_library.tres" id="1_eat54"]
+[ext_resource type="Script" uid="uid://bkmjxhruafegf" path="res://chunk.gd" id="2_a0kup"]
+
+[node name="Chunk" type="GridMap" unique_id=984051207]
+mesh_library = ExtResource("1_eat54")
+cell_size = Vector3(1, 1, 1)
+script = ExtResource("2_a0kup")

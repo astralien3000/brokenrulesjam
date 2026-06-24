@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://bdyigy4fvbvtr"]
 
 [ext_resource type="PackedScene" uid="uid://bydgq1bvyaibu" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://iaadxyt5y0r2" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://chfgw4fxevr33" path="res://map.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dmjwhext3k31a" path="res://object.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=2053855169]
+script = ExtResource("1_1bvp3")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=798566589]
 
 [node name="CharacterBody3D" parent="Node3D" unique_id=1024996980 instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.63887787, 1.3034046, 0.16275)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1642526720]
 transform = Transform3D(0.50294733, 0.50429106, -0.70195055, -0.15672438, 0.85189176, 0.499718, 0.8499891, -0.14131907, 0.50749135, -3.8186157, 0, 2.901853)
@@ -41,3 +44,9 @@ offset_left = -10.0
 offset_top = -2.0
 offset_right = 10.0
 offset_bottom = 2.0
+
+[node name="Timer" type="Timer" parent="." unique_id=51176970]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
