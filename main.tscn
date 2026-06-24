@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bdyigy4fvbvtr"]
+
+[ext_resource type="PackedScene" uid="uid://bydgq1bvyaibu" path="res://player.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://chfgw4fxevr33" path="res://map.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dmjwhext3k31a" path="res://object.tscn" id="3_h2yge"]
+
+[node name="Main" type="Node" unique_id=2053855169]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=798566589]
+
+[node name="CharacterBody3D" parent="Node3D" unique_id=1024996980 instance=ExtResource("1_0xm2m")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1642526720]
+transform = Transform3D(0.50294733, 0.50429106, -0.70195055, -0.15672438, 0.85189176, 0.499718, 0.8499891, -0.14131907, 0.50749135, -3.8186157, 0, 2.901853)
+
+[node name="Map" parent="Node3D" unique_id=1534369915 instance=ExtResource("2_h2yge")]
+
+[node name="Object" parent="Node3D" unique_id=278075428 instance=ExtResource("3_h2yge")]
+transform = Transform3D(0.9659258, -0.22414386, 0.12940952, 0.25881904, 0.83651626, -0.4829629, 0, 0.5, 0.8660254, 0, 3, -5)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=278844519]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CenterContainer" unique_id=1691377746]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CenterContainer/Control" unique_id=991482086]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = 10.0
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/Control" unique_id=2077247462]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -2.0
+offset_right = 10.0
+offset_bottom = 2.0

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cj6ss7bos6rmd"]
+
+[ext_resource type="Texture2D" uid="uid://8tkbf3rgs2j1" path="res://Assets/Patterns/pattern_24.png" id="1_1apkc"]
+[ext_resource type="Texture2D" uid="uid://bp40stpnco7ob" path="res://Assets/Patterns/pattern_42.png" id="3_kpmos"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g226e"]
+albedo_texture = ExtResource("1_1apkc")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6bk5n"]
+material = SubResource("StandardMaterial3D_g226e")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p0hct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wryqs"]
+albedo_texture = ExtResource("3_kpmos")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kpmos"]
+material = SubResource("StandardMaterial3D_wryqs")
+
+[node name="BlockLibrary" type="Node3D" unique_id=7487138]
+
+[node name="Dirt" type="MeshInstance3D" parent="." unique_id=790917522]
+mesh = SubResource("BoxMesh_6bk5n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Dirt" unique_id=1674119667]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt/StaticBody3D" unique_id=509302595]
+shape = SubResource("BoxShape3D_p0hct")
+
+[node name="Cobble" type="MeshInstance3D" parent="." unique_id=1992885401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2007945, 0, 0)
+mesh = SubResource("BoxMesh_kpmos")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cobble" unique_id=1213826772]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cobble/StaticBody3D" unique_id=590296251]
+shape = SubResource("BoxShape3D_p0hct")

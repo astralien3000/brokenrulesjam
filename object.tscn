@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dmjwhext3k31a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7y3yr"]
+size = Vector3(0.3947754, 0.31167603, 0.4942627)
+
+[sub_resource type="TextMesh" id="TextMesh_7y3yr"]
+text = "T"
+font_size = 64
+
+[node name="Object" type="RigidBody3D" unique_id=278075428]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=416576564]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.0052490234, -0.006942749, 0.025939941)
+shape = SubResource("BoxShape3D_7y3yr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2053390089]
+transform = Transform3D(4, 0, 0, 0, 0.12987316, 3.997891, 0, -3.997891, 0.12987316, 0, 0, 0)
+mesh = SubResource("TextMesh_7y3yr")
