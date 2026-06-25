@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4pld3rmjdxhr" path="res://merchant.gd" id="1_25bge"]
 [ext_resource type="MeshLibrary" uid="uid://cux1lwrbs4b7l" path="res://block_library.tres" id="2_25bge"]
-[ext_resource type="PackedScene" uid="uid://cthmxui2cdmot" path="res://Assets/Characters/character-a.fbx" id="3_4467b"]
+[ext_resource type="PackedScene" uid="uid://d2wb8mgb5op2l" path="res://Assets/Characters/character-e.fbx" id="3_25bge"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7y3yr"]
 size = Vector3(1.5849609, 2.741455, 0.9034424)
@@ -24,8 +24,8 @@ aftermath_dialog = "Thanks again !"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012207031, 1.3682861, 6.1035156e-05)
 shape = SubResource("BoxShape3D_7y3yr")
 
-[node name="character-a" parent="BodyShape" unique_id=823342386 instance=ExtResource("3_4467b")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.012207031, -1.3682861, -6.1035156e-05)
+[node name="character-e" parent="BodyShape" unique_id=819812771 instance=ExtResource("3_25bge")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.3037133, 0)
 
 [node name="Dialog" type="Label3D" parent="BodyShape" unique_id=1083661540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012207031, 2.0629177, -6.1035156e-05)

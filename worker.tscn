@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bepph4v5nukkj"]
 
-[ext_resource type="PackedScene" uid="uid://cthmxui2cdmot" path="res://Assets/Characters/character-a.fbx" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bd76cl7l8vaf7" path="res://worker.gd" id="1_8vnpx"]
 [ext_resource type="MeshLibrary" uid="uid://cux1lwrbs4b7l" path="res://block_library.tres" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://h5hfupwjyc62" path="res://Assets/Characters/character-j.fbx" id="3_7p3b1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7y3yr"]
 size = Vector3(1.5849609, 2.741455, 0.9034424)
@@ -23,7 +23,7 @@ mesh_library = ExtResource("2_i3pqv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012207031, 1.3682861, 6.1035156e-05)
 shape = SubResource("BoxShape3D_7y3yr")
 
-[node name="character-a" parent="BodyShape" unique_id=823342386 instance=ExtResource("1_4flbx")]
+[node name="character-j" parent="BodyShape" unique_id=1407073352 instance=ExtResource("3_7p3b1")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.012207031, -1.3682861, -6.1035156e-05)
 
 [node name="Slot" type="Node3D" parent="BodyShape" unique_id=2132782800]

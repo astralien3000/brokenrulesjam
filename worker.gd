@@ -1,7 +1,7 @@
 class_name Worker extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED = 7.0
 const JUMP_VELOCITY = 10.0
 
 @export var weight: float = 5.0
