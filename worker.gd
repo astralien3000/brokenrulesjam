@@ -74,7 +74,7 @@ func pull(agent: Player, cast: RayCast3D):
 		agent.set_block(block_id)
 
 func push(agent: Player, cast: RayCast3D):
-	if agent.has_block():
+	if agent.has_block() and not has_block():
 		var block_id = agent.get_block()
 		agent.clear_block()
 		set_block(block_id)

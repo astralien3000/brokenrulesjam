@@ -23,9 +23,9 @@ var block: Dictionary[String, int]
 
 @export var reward: int = 2
 
-@export var quest_dialog: String = ""
-@export var reward_dialog: String = ""
-@export var aftermath_dialog: String = ""
+@export_multiline var quest_dialog: String = ""
+@export_multiline var reward_dialog: String = ""
+@export_multiline var aftermath_dialog: String = ""
 
 
 func _ready():
