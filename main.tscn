@@ -5,14 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://chfgw4fxevr33" path="res://map.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dmjwhext3k31a" path="res://object.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bepph4v5nukkj" path="res://worker.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c1rk52yfj5q1b" path="res://merchant.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node" unique_id=2053855169]
 script = ExtResource("1_1bvp3")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=798566589]
 
-[node name="CharacterBody3D" parent="Node3D" unique_id=1024996980 instance=ExtResource("1_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 30, 70)
+[node name="Player" parent="Node3D" unique_id=1024996980 instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.340866, 17.55822, 70)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1642526720]
 transform = Transform3D(0.50294733, 0.50429106, -0.70195055, -0.15672438, 0.85189176, 0.499718, 0.8499891, -0.14131907, 0.50749135, -3.8186157, 0, 2.901853)
@@ -23,16 +24,19 @@ transform = Transform3D(0.50294733, 0.50429106, -0.70195055, -0.15672438, 0.8518
 transform = Transform3D(0.9659258, -0.22414386, 0.12940952, 0.25881904, 0.83651626, -0.4829629, 0, 0.5, 0.8660254, 0, 3, -5)
 
 [node name="Worker" parent="Node3D" unique_id=1346831383 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.635315, 30, 65.29425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.19185, 17.615034, 65.29425)
 
 [node name="Worker2" parent="Node3D" unique_id=1969577334 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.270542, 30, 61.517685)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.827076, 17.615034, 61.517685)
 
 [node name="Worker3" parent="Node3D" unique_id=515476318 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.694016, 30, 64.44717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.25055, 17.615034, 64.44717)
 
-[node name="Worker4" parent="Node3D" unique_id=545751758 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.576538, 30, 60.988262)
+[node name="Merchant" parent="Node3D" unique_id=2087788138 node_paths=PackedStringArray("zone_map") instance=ExtResource("6_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.45485, 17.444595, 52.787117)
+zone_map = NodePath("../Map")
+zone_origin = Vector3i(71, 17, 47)
+zone_size = Vector3i(3, 2, 3)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=278844519]
 anchors_preset = 15

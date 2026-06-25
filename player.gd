@@ -19,7 +19,8 @@ const JUMP_VELOCITY = 10.0
 
 @onready var jump_detector: Area3D = $BodyShape/JumpDetector
 
-var block : int = -1
+@export var block : int = -1
+@export var coins : int = 0
 
 func _input(event: InputEvent):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

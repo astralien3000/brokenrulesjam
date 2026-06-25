@@ -36,3 +36,12 @@ collision_mask = 4
 [node name="JumpDetectorShape" type="CollisionShape3D" parent="BodyShape/JumpDetector" unique_id=818824036]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7621846, -0.8557329)
 shape = SubResource("BoxShape3D_204wl")
+
+[node name="Dialog" type="Label3D" parent="BodyShape" unique_id=475277507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012207031, 2.0629177, -6.1035156e-05)
+billboard = 1
+font_size = 64
+
+[node name="Timer" type="Timer" parent="BodyShape/Dialog" unique_id=12337606]
+wait_time = 2.0
+one_shot = true

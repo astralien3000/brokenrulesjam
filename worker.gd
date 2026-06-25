@@ -12,10 +12,13 @@ const JUMP_VELOCITY = 10.0
 
 #@onready var interaction_cast: RayCast3D = $CameraYRoot/CameraXRoot/Camera3D/RayCast3D
 @onready var slot: Node3D = $BodyShape/Slot
+@onready var dialog: Label3D = $BodyShape/Dialog
+@onready var dialog_timer: Timer = $BodyShape/Dialog/Timer
 
 @onready var jump_detector: Area3D = $BodyShape/JumpDetector
 
 @export var player: Player = null
+@export var salary: int = 2
 
 var block : int = -1
 
@@ -59,7 +62,12 @@ func clear_block():
 
 func pull(agent: Player, cast: RayCast3D):
 	if player == null:
-		player = agent
+		if agent.coins >= salary:
+			agent.coins -= salary
+			player = agent
+			say("I will follow you")
+		else:
+			say("You need " + str(salary) + " coins to hire me")
 	elif has_block():
 		var block_id = get_block()
 		clear_block()
@@ -70,3 +78,11 @@ func push(agent: Player, cast: RayCast3D):
 		var block_id = agent.get_block()
 		agent.clear_block()
 		set_block(block_id)
+
+func say(text: String):
+	dialog.text = text
+	dialog_timer.timeout.connect(
+		func():
+			dialog.text = ""
+	)
+	dialog_timer.start()

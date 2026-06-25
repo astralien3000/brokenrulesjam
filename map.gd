@@ -16,15 +16,16 @@ func _ready():
 	heightmap = heightmap_texture.get_image()
 	heightmap.convert(Image.FORMAT_RF)
 
-func generate_around(cx, cy, cz):
+func generate_around_async(cx, cy, cz):
 	WorkerThreadPool.add_task(
-		func():
-			for dx in [0,-1,1,-2,2]:
-				for dz in [0,-1,1,-2,2]:
-					for dy in [-1,0,1]:
-						generate_chunk(cx + dx, cy + dy, cz + dz)
+		generate_around.bind(cx, cy, cz)
 	)
-	
+
+func generate_around(cx, cy, cz):
+	for dx in [0,-1,1,-2,2]:
+		for dz in [0,-1,1,-2,2]:
+			for dy in [-1,0,1]:
+				generate_chunk(cx + dx, cy + dy, cz + dz)
 
 func generate_chunk(cx, cy, cz):
 	var chunk = chunk_tscn.instantiate()
@@ -58,6 +59,44 @@ func chunk_pos(pos: Vector3):
 		floor(float(cell_pos.y) / CHUNK_SIZE),
 		floor(float(cell_pos.z) / CHUNK_SIZE),
 	)
+
+func get_block(pos: Vector3):
+	var cell_pos = Vector3i(
+		floor(pos.x),
+		floor(pos.y),
+		floor(pos.z),
+	)
+	var chunk_pos = Vector3i(
+		floor(float(cell_pos.x) / CHUNK_SIZE),
+		floor(float(cell_pos.y) / CHUNK_SIZE),
+		floor(float(cell_pos.z) / CHUNK_SIZE),
+	)
+	var block_pos = Vector3i(
+		(cell_pos.x % CHUNK_SIZE + CHUNK_SIZE) % CHUNK_SIZE,
+		(cell_pos.y % CHUNK_SIZE + CHUNK_SIZE) % CHUNK_SIZE,
+		(cell_pos.z % CHUNK_SIZE + CHUNK_SIZE) % CHUNK_SIZE,
+	)
+	var chunk = chunks[chunk_pos]
+	return chunk.get_cell_item(block_pos)
+
+func set_block(pos: Vector3, block_id: int):
+	var cell_pos = Vector3i(
+		floor(pos.x),
+		floor(pos.y),
+		floor(pos.z),
+	)
+	var chunk_pos = Vector3i(
+		floor(float(cell_pos.x) / CHUNK_SIZE),
+		floor(float(cell_pos.y) / CHUNK_SIZE),
+		floor(float(cell_pos.z) / CHUNK_SIZE),
+	)
+	var block_pos = Vector3i(
+		(cell_pos.x % CHUNK_SIZE + CHUNK_SIZE) % CHUNK_SIZE,
+		(cell_pos.y % CHUNK_SIZE + CHUNK_SIZE) % CHUNK_SIZE,
+		(cell_pos.z % CHUNK_SIZE + CHUNK_SIZE) % CHUNK_SIZE,
+	)
+	var chunk = chunks[chunk_pos]
+	chunk.set_cell_item(block_pos, block_id)
 
 func pull(agent: Player, cast: RayCast3D):
 	var cell_pos_approx : Vector3 = to_local(
