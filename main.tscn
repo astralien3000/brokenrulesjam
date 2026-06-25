@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bepph4v5nukkj" path="res://worker.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c1rk52yfj5q1b" path="res://merchant.tscn" id="6_7mycd"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font_size = 32
+
 [node name="Main" type="Node" unique_id=2053855169]
 script = ExtResource("1_1bvp3")
 
@@ -85,8 +88,16 @@ offset_top = -2.0
 offset_right = 10.0
 offset_bottom = 2.0
 
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=96609041]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1919408345]
+layout_mode = 2
+text = "coins : 0"
+label_settings = SubResource("LabelSettings_7mycd")
+
 [node name="Timer" type="Timer" parent="." unique_id=51176970]
-wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
