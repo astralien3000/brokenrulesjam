@@ -3,18 +3,29 @@ class_name Map extends Node3D
 const CHUNK_SIZE = 16
 
 @export var noise: FastNoiseLite
+
 @export var mesh_library: MeshLibrary
+var block: Dictionary[String, int]
+var DIRT: int
+var STONE: int
 
 @export var chunk_tscn: PackedScene
 
 @export var heightmap_texture: Texture2D
 var heightmap: Image
 
+@export var resources: Dictionary[Vector3i, String]
+
 var chunks: Dictionary[Vector3i, Chunk] = {}
 
 func _ready():
 	heightmap = heightmap_texture.get_image()
 	heightmap.convert(Image.FORMAT_RF)
+	
+	for i in mesh_library.get_item_list():
+		block[mesh_library.get_item_name(i)] = i
+	DIRT = block["Dirt"]
+	STONE = block["Stone"]
 
 func generate_around_async(cx, cy, cz):
 	WorkerThreadPool.add_task(
@@ -42,8 +53,15 @@ func generate_chunk(cx, cy, cz):
 					height += heightmap.get_pixel(x, z).r * 20
 			for by in range(0, CHUNK_SIZE):
 				var y = cy * CHUNK_SIZE + by
-				if y < height:
-					chunk.set_cell_item(Vector3i(bx, by, bz), 0)
+				if y < height - 2:
+					chunk.set_cell_item(Vector3i(bx, by, bz), STONE)
+				elif y < height:
+					chunk.set_cell_item(Vector3i(bx, by, bz), DIRT)
+				if Vector3i(x, y, z) in resources:
+					chunk.set_cell_item(
+						Vector3i(bx, by, bz),
+						block[resources[Vector3i(x, y, z)]]
+					)
 	chunk.position.x = cx * CHUNK_SIZE
 	chunk.position.y = cy * CHUNK_SIZE
 	chunk.position.z = cz * CHUNK_SIZE

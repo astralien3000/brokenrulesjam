@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1rk52yfj5q1b"]
 
 [ext_resource type="Script" uid="uid://4pld3rmjdxhr" path="res://merchant.gd" id="1_25bge"]
+[ext_resource type="MeshLibrary" uid="uid://cux1lwrbs4b7l" path="res://block_library.tres" id="2_25bge"]
 [ext_resource type="PackedScene" uid="uid://cthmxui2cdmot" path="res://Assets/Characters/character-a.fbx" id="3_4467b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7y3yr"]
@@ -13,6 +14,7 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 slide_on_ceiling = false
 script = ExtResource("1_25bge")
+block_library = ExtResource("2_25bge")
 required_block_count = 2
 quest_dialog = "I will gie you 2 coins if you give me 2 blocks"
 reward_dialog = "Thanks ! Here are your 2 coins !"

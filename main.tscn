@@ -19,6 +19,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.340866, 17.55822, 70)
 transform = Transform3D(0.50294733, 0.50429106, -0.70195055, -0.15672438, 0.85189176, 0.499718, 0.8499891, -0.14131907, 0.50749135, -3.8186157, 0, 2.901853)
 
 [node name="Map" parent="Node3D" unique_id=1534369915 instance=ExtResource("2_h2yge")]
+resources = Dictionary[Vector3i, String]({
+Vector3i(71, 16, 56): "Metal",
+Vector3i(93, 15, 94): "Metal",
+Vector3i(222, 12, 75): "Metal",
+Vector3i(229, 11, 62): "Metal",
+Vector3i(232, 12, 70): "Metal",
+Vector3i(234, 12, 77): "Metal"
+})
 
 [node name="Object" parent="Node3D" unique_id=278075428 instance=ExtResource("3_h2yge")]
 transform = Transform3D(0.9659258, -0.22414386, 0.12940952, 0.25881904, 0.83651626, -0.4829629, 0, 0.5, 0.8660254, 0, 3, -5)
@@ -37,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.45485, 17.444595, 52.78711
 zone_map = NodePath("../Map")
 zone_origin = Vector3i(71, 17, 47)
 zone_size = Vector3i(3, 2, 3)
+reward = 8
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=278844519]
 anchors_preset = 15

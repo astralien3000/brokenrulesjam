@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cj6ss7bos6rmd"]
 
-[ext_resource type="Texture2D" uid="uid://8tkbf3rgs2j1" path="res://Assets/Patterns/pattern_24.png" id="1_1apkc"]
-[ext_resource type="Texture2D" uid="uid://bp40stpnco7ob" path="res://Assets/Patterns/pattern_42.png" id="3_kpmos"]
+[ext_resource type="Texture2D" uid="uid://br50d3kae5uy" path="res://Assets/SBS - Tiny Texture Pack - 128x128/128x128/Grass/Grass_12-128x128.png" id="1_1apkc"]
+[ext_resource type="Texture2D" uid="uid://bxrikey1jxr1s" path="res://Assets/SBS - Tiny Texture Pack 2 - 128x128/128x128/Stone/Stone_05-128x128.png" id="2_1apkc"]
+[ext_resource type="Texture2D" uid="uid://d61bnd6v3xad" path="res://Assets/SBS - Tiny Texture Pack - 128x128/128x128/Wood/Wood_01-128x128.png" id="3_kpmos"]
+[ext_resource type="Texture2D" uid="uid://d1snlo6om3du" path="res://Assets/SBS - Tiny Texture Pack 2 - 128x128/128x128/Stone/Stone_13-128x128.png" id="4_55fet"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g226e"]
 albedo_texture = ExtResource("1_1apkc")
@@ -12,12 +14,29 @@ material = SubResource("StandardMaterial3D_g226e")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p0hct"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wryqs"]
-albedo_texture = ExtResource("3_kpmos")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gin7h"]
+albedo_texture = ExtResource("2_1apkc")
 uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kpmos"]
-material = SubResource("StandardMaterial3D_wryqs")
+material = SubResource("StandardMaterial3D_gin7h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55fet"]
+albedo_texture = ExtResource("3_kpmos")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xtxxd"]
+material = SubResource("StandardMaterial3D_55fet")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtxxd"]
+albedo_color = Color(1, 1, 0.28235295, 1)
+albedo_texture = ExtResource("4_55fet")
+emission_enabled = true
+emission = Color(0.25043684, 0.250437, 0, 1)
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2rqun"]
+material = SubResource("StandardMaterial3D_xtxxd")
 
 [node name="BlockLibrary" type="Node3D" unique_id=7487138]
 
@@ -30,12 +49,32 @@ collision_layer = 5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt/StaticBody3D" unique_id=509302595]
 shape = SubResource("BoxShape3D_p0hct")
 
-[node name="Cobble" type="MeshInstance3D" parent="." unique_id=1992885401]
+[node name="Stone" type="MeshInstance3D" parent="." unique_id=1992885401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2007945, 0, 0)
 mesh = SubResource("BoxMesh_kpmos")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Cobble" unique_id=1213826772]
+[node name="StaticBody3D" type="StaticBody3D" parent="Stone" unique_id=1213826772]
 collision_layer = 5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cobble/StaticBody3D" unique_id=590296251]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stone/StaticBody3D" unique_id=590296251]
+shape = SubResource("BoxShape3D_p0hct")
+
+[node name="Wood" type="MeshInstance3D" parent="." unique_id=1743027071]
+transform = Transform3D(1, 0, 0, 0, 0.9999989, 0.0014567999, 0, -0.0014567999, 0.9999989, -1.4191918, 0, 0)
+mesh = SubResource("BoxMesh_xtxxd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wood" unique_id=16353734]
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wood/StaticBody3D" unique_id=1331379095]
+shape = SubResource("BoxShape3D_p0hct")
+
+[node name="Metal" type="MeshInstance3D" parent="." unique_id=1579529051]
+transform = Transform3D(1, 0, 0, 0, 0.9999989, 0.0014567999, 0, -0.0014567999, 0.9999989, -0.0036566257, 0, 1.4422007)
+mesh = SubResource("BoxMesh_2rqun")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Metal" unique_id=193540034]
+collision_layer = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Metal/StaticBody3D" unique_id=101233354]
 shape = SubResource("BoxShape3D_p0hct")
