@@ -33,5 +33,5 @@ billboard = 1
 font_size = 64
 
 [node name="Timer" type="Timer" parent="BodyShape/Dialog" unique_id=649088653]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true

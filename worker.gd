@@ -9,6 +9,7 @@ const JUMP_VELOCITY = 10.0
 @export var mesh_library: MeshLibrary
 
 @onready var body_shape: CollisionShape3D = $BodyShape
+@onready var anim: AnimationPlayer = $"BodyShape/character-j/AnimationPlayer"
 
 #@onready var interaction_cast: RayCast3D = $CameraYRoot/CameraXRoot/Camera3D/RayCast3D
 @onready var slot: Node3D = $BodyShape/Slot
@@ -39,9 +40,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
 			body_shape.rotation.y = atan2(-direction.x, -direction.z)
+			anim.play("walk")
 		else:
 			velocity.x = 0.0
 			velocity.z = 0.0
+			anim.stop()
 
 	move_and_slide()
 
@@ -70,6 +73,7 @@ func pull(agent: Player, cast: RayCast3D):
 			say("I will follow you")
 		else:
 			say("You need " + str(salary) + " coins to hire me")
+			anim.play("emote-no")
 	elif has_block():
 		var block_id = get_block()
 		clear_block()

@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 10.0
 @export var weight: float = 5.0
 
 @onready var body_shape: CollisionShape3D = $BodyShape
+@onready var anim: AnimationPlayer = $"BodyShape/character-e/AnimationPlayer"
 
 @onready var dialog: Label3D = $BodyShape/Dialog
 @onready var dialog_timer: Timer = $BodyShape/Dialog/Timer
@@ -70,15 +71,17 @@ func fill_platform():
 func interact(agent: Player):
 	if block_count() < required_block_count:
 		say(quest_dialog)
-		# fill platform
 		fill_platform()
+		anim.play("emote-no")
 	if block_count() >= required_block_count:
 		if reward:
 			say(reward_dialog)
 			agent.coins += reward
 			reward = 0
+			anim.play("interact-right")
 		else:
 			say(aftermath_dialog)
+			anim.play("idle")
 
 func pull(agent: Player, cast: RayCast3D):
 	interact(agent)
