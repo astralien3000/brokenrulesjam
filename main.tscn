@@ -7,8 +7,33 @@
 [ext_resource type="PackedScene" uid="uid://bepph4v5nukkj" path="res://worker.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c1rk52yfj5q1b" path="res://merchant.tscn" id="6_7mycd"]
 
+[sub_resource type="Gradient" id="Gradient_7mycd"]
+colors = PackedColorArray(0.4862745, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7mycd"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gin7h"]
+noise = SubResource("FastNoiseLite_7mycd")
+color_ramp = SubResource("Gradient_7mycd")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mp8hf"]
+panorama = SubResource("NoiseTexture2D_gin7h")
+
+[sub_resource type="Sky" id="Sky_mgihc"]
+sky_material = SubResource("PanoramaSkyMaterial_mp8hf")
+
+[sub_resource type="Environment" id="Environment_7y3yr"]
+background_mode = 2
+sky = SubResource("Sky_mgihc")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
+
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node" unique_id=2053855169]
 script = ExtResource("1_1bvp3")
@@ -20,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.340866, 17.55822, 70)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1642526720]
 transform = Transform3D(0.50294733, 0.50429106, -0.70195055, -0.15672438, 0.85189176, 0.499718, 0.8499891, -0.14131907, 0.50749135, -3.8186157, 0, 2.901853)
+light_energy = 1.5
 
 [node name="Map" parent="Node3D" unique_id=1534369915 instance=ExtResource("2_h2yge")]
 resources = Dictionary[Vector3i, String]({
@@ -63,6 +89,9 @@ reward = 16
 quest_dialog = "I will give you 16 coins if you give me 4 gold blocks.
 You should hire some workers."
 reward_dialog = "Thanks ! Here are your 16 coins !"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D" unique_id=729875487]
+environment = SubResource("Environment_7y3yr")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=278844519]
 anchors_preset = 15

@@ -30,7 +30,9 @@ func _physics_process(delta: float) -> void:
 	if player != null:
 		var target_vec := player.position - position
 		var direction := target_vec.normalized()
-		var speed = SPEED * (1 - 1/target_vec.length())
+		var speed = SPEED * 0.5
+		if target_vec.length() > 6.0:
+			speed = SPEED * 1.1
 		if target_vec.length() > 3.0:
 			if jump_detector.has_overlapping_bodies() and is_on_floor():
 				velocity.y = JUMP_VELOCITY
@@ -72,6 +74,8 @@ func pull(agent: Player, cast: RayCast3D):
 		var block_id = get_block()
 		clear_block()
 		agent.set_block(block_id)
+	else:
+		say("Is there something to carry ?")
 
 func push(agent: Player, cast: RayCast3D):
 	if agent.has_block() and not has_block():
