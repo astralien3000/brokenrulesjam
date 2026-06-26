@@ -13,6 +13,7 @@ const JUMP_VELOCITY = 10.0
 @onready var camera_x_root: Node3D = $CameraYRoot/CameraXRoot
 @onready var camera: Camera3D = $CameraYRoot/CameraXRoot/Camera3D
 @onready var body_shape: CollisionShape3D = $BodyShape
+@onready var anim: AnimationPlayer = $"BodyShape/character-a/AnimationPlayer"
 
 @onready var interaction_cast: RayCast3D = $CameraYRoot/CameraXRoot/Camera3D/RayCast3D
 @onready var slot: Node3D = $BodyShape/Slot
@@ -74,10 +75,16 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		body_shape.rotation.y = atan2(-direction.x, -direction.z)
+		body_shape.rotation.y = lerp_angle(
+			body_shape.rotation.y,
+			atan2(-direction.x, -direction.z),
+			delta * 10,
+		)
+		anim.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		anim.play("idle")
 
 	move_and_slide()
 
